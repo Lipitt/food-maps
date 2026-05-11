@@ -5,7 +5,6 @@ import FilterPanel from '@/components/map/FilterPanel'
 import { useRestaurants, useAddRestaurant, useDeleteRestaurant } from '@/hooks/useRestaurants'
 import { useAuth } from '@/context/AuthContext'
 import { useFilters } from '@/hooks/useFilters'
-import { useGeolocation } from '@/hooks/useGeolocation'
 import type { RestaurantFormData, RestaurantInsert } from '@/types/restaurant'
 import type { Feature, Polygon } from 'geojson'
 
@@ -15,7 +14,6 @@ export default function MapPage() {
   const { mutate: addRestaurant, isPending: isAdding } = useAddRestaurant()
   const { mutate: deleteRestaurant } = useDeleteRestaurant()
   const { filters, setFilters, filtered } = useFilters(restaurants)
-  const userCoords = useGeolocation()
 
   const handleAdd = (data: RestaurantFormData) => {
     const insert: RestaurantInsert = { ...data, created_by: user?.id ?? null }
@@ -60,7 +58,6 @@ export default function MapPage() {
         currentUserId={user?.id ?? null}
         isAuthenticated={!!user}
         isSubmitting={isAdding}
-        userCoords={userCoords}
         onDrawPolygon={handleDrawPolygon}
       />
     </div>

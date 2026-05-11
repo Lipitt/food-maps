@@ -94,7 +94,7 @@ Toggling heatmap hides all cluster layers and vice versa. Button label: "🌡️
 The draw control must be added after the map fires its `load` event. The `useEffect` in `FoodMap.tsx` depends on `mapLoaded` state which is set via `<Map onLoad={() => setMapLoaded(true)}>`. Initializing before load causes the control to silently fail.
 
 ### Geolocation — three levels
-1. Default: New York (`{latitude: 40.7484, longitude: -73.9857}`)
+1. Default: Buenos Aires (`{latitude: -34.6037, longitude: -58.3816}`)
 2. IP geolocation via `ipapi.co/json/` — city-level, no browser prompt
 3. Browser `navigator.geolocation` — precise, requires user permission
 
@@ -114,12 +114,17 @@ Each level triggers a `flyTo()` animation on the map.
 - [x] Filter panel: by cuisine, minimum rating, price range
 - [x] IP + browser geolocation with animated flyTo
 
-### Phase 2 — in progress
+### Phase 2 — complete
 - [x] Restaurant clustering (Mapbox GeoJSON cluster source)
 - [x] Cluster click → zoom in with `getClusterExpansionZoom`
 - [x] Heatmap layer (mutually exclusive with clusters)
 - [x] Draw-to-search: MapboxDraw polygon → spatial filter via `@turf/boolean-point-in-polygon`
-- [ ] Neighborhood polygon boundaries with hover effects (not started)
+- [x] Neighborhood polygon boundaries with hover effects (Buenos Aires barrios from BA Open Data)
+
+### Phase 3 — complete
+- [x] 3D buildings layer (fill-extrusion via mapbox-streets-v8 composite source)
+- [x] 3D/2D toggle button with animated pitch/bearing transition
+- [x] Performance: memoized GeoJSON conversion with useMemo
 
 ## Known gotchas
 

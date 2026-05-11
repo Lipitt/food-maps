@@ -5,7 +5,7 @@ export interface GeoCoords {
   longitude: number
 }
 
-const DEFAULT_COORDS: GeoCoords = { latitude: 40.7484, longitude: -73.9857 }
+const DEFAULT_COORDS: GeoCoords = { latitude: -34.6037, longitude: -58.3816 }
 
 export function useGeolocation() {
   const [coords, setCoords] = useState<GeoCoords>(DEFAULT_COORDS)
